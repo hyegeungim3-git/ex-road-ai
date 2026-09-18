@@ -112,10 +112,10 @@ const ForecastView = ({ cfg, color }) => {
           <Stat label="현재 관측" value={`${current} ${seg.unit}`} tone={tone} note={`평시 ${seg.baseline} ${seg.unit}`} />
           <Stat label={`${cfg.horizonLabel} 예측`} value={`${seg.forecast.value} ${seg.unit}`} note={`95% ${seg.forecast.lo}~${seg.forecast.hi}`} />
           <Stat label="예측 오차(MAE)" value={`${seg.mae} ${seg.unit}`}
-            note={maeTarget != null ? `목표 ${maeTarget} 이하` : undefined}
+            note={maeTarget != null ? `목표 ${maeTarget.toFixed(1)} 이하` : undefined}
             tone={maeTarget != null && seg.mae > maeTarget ? "amber" : "emerald"} />
           <Stat label="드리프트 지수" value={`+${seg.drift}`}
-            note={driftThreshold != null ? `임계 ${driftThreshold}` : undefined}
+            note={driftThreshold != null ? `임계 ${driftThreshold.toFixed(1)}` : undefined}
             tone={driftThreshold == null ? "slate" : seg.drift >= driftThreshold ? "rose" : seg.drift >= driftThreshold * 0.8 ? "amber" : "emerald"} />
         </div>
 
